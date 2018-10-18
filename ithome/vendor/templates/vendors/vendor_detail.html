@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %} My store {% endblock %}
+{% block content%}
+{% for vlist in vendor_list %}
+  <h1> 店家 : {{vlist.vendor_name}} </h1>
+  <ul>
+    <li>店名 : {{ vlist.store_name}}</li>
+    <li>電話 : {{ vlist.phone_number}}</li>
+    <li>地址 : {{ vlist.address}}</li>
+  </ul>
+{% endfor %}
+{% endblock %}

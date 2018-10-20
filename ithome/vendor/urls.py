@@ -20,6 +20,7 @@ from . import views
 
 urlpatterns = [
     path('', views.showtemplate),
+    path('<int:id>/', views.singleVendor, name='vendor'),
     path('create', views.vendor_create_view),
     path('fcreate', views.food_create_view),
 ]

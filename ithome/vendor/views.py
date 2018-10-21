@@ -1,6 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Vendor
 from .forms import VendorForm, FoodForm, RawVendorForm
+from django.http import HttpResponse, HttpResponseNotFound
+
 # Create your views here.
 def showtemplate(request):
     vendor_list = Vendor.objects.all()
@@ -9,8 +11,11 @@ def showtemplate(request):
     return render(request, 'vendors/vendor_detail.html', context)
 
 def singleVendor(request, id):
-    vendor_list = Vendor.objects.get(id=id)
-    print(vendor_list)
+    vendor_list = get_object_or_404(Vendor, id=id)
+    # try:
+    #     vendor_list = Vendor.objects.get(id=id)
+    # except Vendor.DoesNotExist:
+    #     raise Http404
     context = {
         'vendor_list': vendor_list
     }

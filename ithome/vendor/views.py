@@ -8,7 +8,7 @@ def showtemplate(request):
     vendor_list = Vendor.objects.all()
     context = {'vendor_list': vendor_list}
     # print(vendor_list)
-    return render(request, 'vendors/vendor_detail.html', context)
+    return render(request, 'vendors/detail.html', context)
 
 def singleVendor(request, id):
     vendor_list = get_object_or_404(Vendor, id=id)

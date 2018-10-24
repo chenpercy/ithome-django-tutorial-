@@ -17,10 +17,10 @@ from django.contrib import admin
 from django.urls import path
 
 from . import views
-
+app_name = 'vendors'
 urlpatterns = [
-    path('', views.showtemplate),
-    path('<int:id>/', views.singleVendor, name='vendor'),
-    path('create', views.vendor_create_view),
-    path('fcreate', views.food_create_view),
+    path('', views.showtemplate, name='index'),
+    path('<int:id>/', views.singleVendor, name='vendor_id'),
+    path('create', views.vendor_create_view, name='create'),
+    path('fcreate', views.food_create_view, ),
 ]

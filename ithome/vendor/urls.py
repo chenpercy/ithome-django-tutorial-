@@ -16,11 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from . import views
+from .views import (
+    VendorDetailView,
+    VendorListView,
+)
 app_name = 'vendors'
 urlpatterns = [
-    path('', views.showtemplate, name='index'),
-    path('<int:id>/', views.singleVendor, name='vendor_id'),
-    path('create', views.vendor_create_view, name='create'),
-    path('fcreate', views.food_create_view, ),
+    path('', VendorListView.as_view(), name='index'),
+    path('<int:pk>/', VendorDetailView.as_view(), name='vendor_id'),
+    # path('create', views.vendor_create_view, name='create'),
+    # path('fcreate', views.food_create_view, ),
 ]

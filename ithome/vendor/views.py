@@ -1,9 +1,19 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Vendor
 from .forms import VendorForm, FoodForm, RawVendorForm
 from django.http import HttpResponse, HttpResponseNotFound
 
+from .models import Vendor
+from django.views.generic import ListView, DetailView
+
 # Create your views here.
+class VendorListView(ListView):
+    model = Vendor
+    template_name = 'vendors/vendor_list.html'
+
+class VendorDetailView(DetailView):
+    model = Vendor
+    template_name = 'vendors/vendor_detail.html'
+
 def showtemplate(request):
     vendor_list = Vendor.objects.all()
     context = {'vendor_list': vendor_list}

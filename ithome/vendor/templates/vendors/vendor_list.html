@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for vendor in object_list %}
+ <div class="">
+   <h2><a href="{% url 'vendors:vendor_id' vendor.pk %}">{{ vendor.store_name}}</a></h2>
+   <p>{{ vendor.vendor_name }}</p>
+ </div>
+{% endfor %}
+{% endblock content %}

@@ -3,7 +3,7 @@ from django import forms
 from .models import Vendor, Food
 from django.utils.translation import gettext_lazy as _
 
-class VendorForm(forms.ModelForm):
+class VendorModelForm(forms.ModelForm):
     class Meta:
         model = Vendor
         fields = '__all__'

@@ -10,7 +10,7 @@ class Vendor(models.Model):
 	address = models.CharField(max_length = 100) # 攤販的地址
 
 	def get_absolute_url(self):
-		return reverse("vendors:vendor_id", kwargs={"id": self.id})
+		return reverse("vendors:vendor_id", kwargs={"pk": self.id})
 
 	def __str__(self):
 		return self.vendor_name

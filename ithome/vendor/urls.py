@@ -19,11 +19,14 @@ from django.urls import path
 from .views import (
     VendorDetailView,
     VendorListView,
+    VendorCreateView,
+    VendorUpdateView,
 )
 app_name = 'vendors'
 urlpatterns = [
     path('', VendorListView.as_view(), name='index'),
     path('<int:pk>/', VendorDetailView.as_view(), name='vendor_id'),
-    # path('create', views.vendor_create_view, name='create'),
+    path('create/', VendorCreateView.as_view(), name='create'),
+    path('<int:pk>/update/', VendorUpdateView.as_view(), name='update'),
     # path('fcreate', views.food_create_view, ),
 ]

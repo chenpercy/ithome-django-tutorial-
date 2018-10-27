@@ -1,11 +1,27 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import VendorForm, FoodForm, RawVendorForm
+from .forms import VendorModelForm, FoodForm, RawVendorForm
 from django.http import HttpResponse, HttpResponseNotFound
 
 from .models import Vendor
-from django.views.generic import ListView, DetailView
+from .forms import VendorModelForm
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 # Create your views here.
+
+class VendorCreateView(CreateView):
+    form_class = VendorModelForm
+    # model = Vendor
+    # fields= ['vendor_name', 'store_name']
+    template_name = 'vendors/vendor_create.html'
+
+class VendorUpdateView(UpdateView):
+    form_class = VendorModelForm
+    # model = Vendor
+    # fields= ['vendor_name', 'store_name']
+    template_name = 'vendors/vendor_create.html'
+    queryset = Vendor.objects.all()
+
+
 class VendorListView(ListView):
     model = Vendor
     template_name = 'vendors/vendor_list.html'
@@ -13,6 +29,10 @@ class VendorListView(ListView):
 class VendorDetailView(DetailView):
     model = Vendor
     template_name = 'vendors/vendor_detail.html'
+
+    # def get_object(self):
+    #     id_=self.kwargs.get("id")
+    #     return get_object_or_404(Vendor, id= id_)
 
 def showtemplate(request):
     vendor_list = Vendor.objects.all()

@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import TemplateView
 # Create your views here.
-class Home(TemplateView):
+class HomePage(TemplateView):
 	template_name = 'home.html'
 def index(request):
 	return HttpResponse("Hello, Django. Nice 2 meet u.")
